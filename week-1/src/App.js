@@ -52,14 +52,32 @@ import 'App.css';
     컴포넌트 화 
     반복 되는 요소들은 타이핑이 길어지므로 컴포넌트 화
 */
-// 자식 컴포넌트
+// // 자식 컴포넌트
+// function Child() {
+//     return <div>나는 자식입니다.</div>;
+// }
+
+// // 부모 컴포넌트
+// function App() {
+//     return <Child />;
+// }
+
+/* 실습 */
+
 function Child() {
-    return <div>나는 자식입니다.</div>;
+    return <div>연결</div>;
 }
 
-// 부모 컴포넌트
-function App() {
+function Mother() {
     return <Child />;
+}
+
+function GrandFather() {
+    return <Mother />;
+}
+
+function App() {
+    return <GrandFather />;
 }
 
 export default App;

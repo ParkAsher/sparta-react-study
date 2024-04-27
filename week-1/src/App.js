@@ -62,22 +62,44 @@ import 'App.css';
 //     return <Child />;
 // }
 
-/* 실습 */
+// /* 실습 */
+// function Child() {
+//     return <div>연결</div>;
+// }
 
-function Child() {
-    return <div>연결</div>;
-}
+// function Mother() {
+//     return <Child />;
+// }
 
-function Mother() {
-    return <Child />;
-}
+// function GrandFather() {
+//     return <Mother />;
+// }
 
-function GrandFather() {
-    return <Mother />;
-}
+// function App() {
+//     return <GrandFather />;
+// }
 
+/* JSX 실습 */
 function App() {
-    return <GrandFather />;
+    const cat_name = 'perl';
+
+    const number = 1;
+
+    const pTagStyle = {
+        color: 'red',
+        fontSize: '20px',
+    };
+
+    return (
+        <div>
+            <input type='text' />
+            <div>hello {cat_name}!</div>
+            {/* JSX 내에서 코드 주석은 이렇게 씁니다. */}
+            <p style={pTagStyle}>
+                {number > 10 ? number + '은 10보다 크다' : number + '은 10보다 작다'}
+            </p>
+        </div>
+    );
 }
 
 export default App;

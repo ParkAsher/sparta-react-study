@@ -1,3 +1,4 @@
+import Layout from 'Layout';
 import logo from './logo.svg';
 import 'App.css';
 
@@ -134,16 +135,28 @@ import 'App.css';
 
 // --------------------------------------------------------------------------------- //
 
-/* Props Children */
+// /* Props Children */
 
-// 자식 컴포넌트 태그 사이에 데이터를 넣는 방식
+// // 자식 컴포넌트 태그 사이에 데이터를 넣는 방식
+// function App() {
+//     return <User>안녕하세요</User>;
+// }
+
+// function User(props) {
+//     console.log('props', props);
+//     return <div>{props.children}</div>;
+// }
+
+// --------------------------------------------------------------------------------- //
+
+/* Props Children 문법을 사용하는 용도 */
+
 function App() {
-    return <User>안녕하세요</User>;
-}
-
-function User(props) {
-    console.log('props', props);
-    return <div>{props.children}</div>;
+    return (
+        <Layout>
+            <div>App 컴포넌트에서 보낸 값입니다!</div>
+        </Layout>
+    );
 }
 
 export default App;

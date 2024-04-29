@@ -24,6 +24,8 @@ import 'App.css';
 //     );
 // }
 
+// -------------------------------------------------------------------------------------- //
+
 // function App() {
 //     // <--- 자바스크립트 영역 --->
 //     const handleClick = () => {
@@ -47,6 +49,8 @@ import 'App.css';
 //         </div>
 //     );
 // }
+
+// ----------------------------------------------------------------------------------------- //
 
 /* 
     컴포넌트 화 
@@ -79,27 +83,53 @@ import 'App.css';
 //     return <GrandFather />;
 // }
 
-/* JSX 실습 */
+// --------------------------------------------------------------------------------- //
+
+// /* JSX 실습 */
+// function App() {
+//     const cat_name = 'perl';
+
+//     const number = 1;
+
+//     const pTagStyle = {
+//         color: 'red',
+//         fontSize: '20px',
+//     };
+
+//     return (
+//         <div>
+//             <input type='text' />
+//             <div>hello {cat_name}!</div>
+//             {/* JSX 내에서 코드 주석은 이렇게 씁니다. */}
+//             <p style={pTagStyle}>
+//                 {number > 10 ? number + '은 10보다 크다' : number + '은 10보다 작다'}
+//             </p>
+//         </div>
+//     );
+// }
+
+// ----------------------------------------------------------------------------------- //
+
+/* Props 예시 */
+
+// props를 통해 부모 -> 자식 데이터가 전달됐다.
+function Son(props) {
+    console.log('props ', props.motherName);
+    return <div>나는 {props.motherName}의 아들이에요!</div>;
+}
+
+// 부모 -> 자식 정보를 전달했다!
+function Mother() {
+    const name = '홍부인';
+    return <Son motherName={name} />;
+}
+
+function GrandFather() {
+    return <Mother />;
+}
+
 function App() {
-    const cat_name = 'perl';
-
-    const number = 1;
-
-    const pTagStyle = {
-        color: 'red',
-        fontSize: '20px',
-    };
-
-    return (
-        <div>
-            <input type='text' />
-            <div>hello {cat_name}!</div>
-            {/* JSX 내에서 코드 주석은 이렇게 씁니다. */}
-            <p style={pTagStyle}>
-                {number > 10 ? number + '은 10보다 크다' : number + '은 10보다 작다'}
-            </p>
-        </div>
-    );
+    return <GrandFather />;
 }
 
 export default App;

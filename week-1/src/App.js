@@ -110,26 +110,40 @@ import 'App.css';
 
 // ----------------------------------------------------------------------------------- //
 
-/* Props 예시 */
+// /* Props 예시 */
 
-// props를 통해 부모 -> 자식 데이터가 전달됐다.
-function Son(props) {
-    console.log('props ', props.motherName);
-    return <div>나는 {props.motherName}의 아들이에요!</div>;
-}
+// // props를 통해 부모 -> 자식 데이터가 전달됐다.
+// function Son(props) {
+//     console.log('props ', props.motherName);
+//     return <div>나는 {props.motherName}의 아들이에요!</div>;
+// }
 
-// 부모 -> 자식 정보를 전달했다!
-function Mother() {
-    const name = '홍부인';
-    return <Son motherName={name} />;
-}
+// // 부모 -> 자식 정보를 전달했다!
+// function Mother() {
+//     const name = '홍부인';
+//     return <Son motherName={name} />;
+// }
 
-function GrandFather() {
-    return <Mother />;
-}
+// function GrandFather() {
+//     return <Mother />;
+// }
 
+// function App() {
+//     return <GrandFather />;
+// }
+
+// --------------------------------------------------------------------------------- //
+
+/* Props Children */
+
+// 자식 컴포넌트 태그 사이에 데이터를 넣는 방식
 function App() {
-    return <GrandFather />;
+    return <User>안녕하세요</User>;
+}
+
+function User(props) {
+    console.log('props', props);
+    return <div>{props.children}</div>;
 }
 
 export default App;

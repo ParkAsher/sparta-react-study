@@ -1,6 +1,7 @@
 import Layout from 'Layout';
 import logo from './logo.svg';
 import 'App.css';
+import Child from 'Child';
 
 // function App() {    // 컴포넌트 이름은 무조건 대문자로 시작
 //     return (
@@ -149,14 +150,22 @@ import 'App.css';
 
 // --------------------------------------------------------------------------------- //
 
-/* Props Children 문법을 사용하는 용도 */
+// /* Props Children 문법을 사용하는 용도 */
+
+// function App() {
+//     return (
+//         <Layout>
+//             <div>App 컴포넌트에서 보낸 값입니다!</div>
+//         </Layout>
+//     );
+// }
+
+// --------------------------------------------------------------------------------- //
 
 function App() {
-    return (
-        <Layout>
-            <div>App 컴포넌트에서 보낸 값입니다!</div>
-        </Layout>
-    );
+    const name = 'test';
+
+    return <Child age={21}>이름</Child>;
 }
 
 export default App;

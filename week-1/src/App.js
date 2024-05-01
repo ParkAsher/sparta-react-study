@@ -171,47 +171,80 @@ import { useState } from 'react';
 
 // --------------------------------------------------------------------------------- //
 
+// function App() {
+//     // React에서 state를 쓰는 목적 : UI를 바꾸기 위해서!
+//     // 변경되어야 하는 값들은 state로 선언!
+
+//     // hook
+//     // const [state, setState] = useState('initial Value');
+//     // const [count, setCount] = useState(0);
+//     // const [todoList, setTodoList] = useState([]);
+
+//     // 예시 1
+//     // const [name, setName] = useState('김할아버지');
+
+//     // return (
+//     //     <div>
+//     //         {name}
+//     //         <br />
+//     //         <button
+//     //             onClick={function () {
+//     //                 setName('박할아버지');
+//     //             }}
+//     //         >
+//     //             클릭
+//     //         </button>
+//     //     </div>
+//     // );
+
+//     // 예시2
+//     const [fruit, setFruit] = useState('');
+
+//     return (
+//         <div>
+//             과일 :
+//             <input
+//                 value={fruit}
+//                 onChange={function (event) {
+//                     // console.log('event', event.target.value);
+//                     setFruit(event.target.value);
+//                 }}
+//             />
+//             <br></br>
+//             {fruit}
+//         </div>
+//     );
+// }
+
+// --------------------------------------------------------------------------------- //
+
+/* 예제 1 */
 function App() {
-    // React에서 state를 쓰는 목적 : UI를 바꾸기 위해서!
-    // 변경되어야 하는 값들은 state로 선언!
+    const [id, setId] = useState('');
+    const [pw, setPw] = useState('');
 
-    // hook
-    // const [state, setState] = useState('initial Value');
-    // const [count, setCount] = useState(0);
-    // const [todoList, setTodoList] = useState([]);
+    const onIdchangeHandler = (e) => {
+        setId(e.target.value);
+    };
+    const ondPwchangeHandler = (e) => {
+        setPw(e.target.value);
+    };
 
-    // 예시 1
-    // const [name, setName] = useState('김할아버지');
+    const onloginClickHandler = () => {
+        alert(`고객님이 입력하신 아이디는 ${id}이며, 비밀번호는 ${pw}입니다.`);
 
-    // return (
-    //     <div>
-    //         {name}
-    //         <br />
-    //         <button
-    //             onClick={function () {
-    //                 setName('박할아버지');
-    //             }}
-    //         >
-    //             클릭
-    //         </button>
-    //     </div>
-    // );
-
-    // 예시2
-    const [fruit, setFruit] = useState('');
+        // 비우기
+        setId('');
+        setPw('');
+    };
 
     return (
         <div>
-            과일 :
-            <input
-                value={fruit}
-                onChange={function (event) {
-                    // console.log('event', event.target.value);
-                    setFruit(event.target.value);
-                }}
-            />
-            <br></br>
-            {fruit}
+            아이디 : <input type='text' value={id} onChange={onIdchangeHandler} />
+            <br />
+            비밀번호 : <input type='password' value={pw} onChange={ondPwchangeHandler} />
+            <br />
+            <button onClick={onloginClickHandler}>로그인</button>
         </div>
     );
 }

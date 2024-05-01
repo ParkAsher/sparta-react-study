@@ -2,6 +2,7 @@ import Layout from 'Layout';
 import logo from './logo.svg';
 import 'App.css';
 import Child from 'Child';
+import { useState } from 'react';
 
 // function App() {    // 컴포넌트 이름은 무조건 대문자로 시작
 //     return (
@@ -162,10 +163,57 @@ import Child from 'Child';
 
 // --------------------------------------------------------------------------------- //
 
-function App() {
-    const name = 'test';
+// function App() {
+//     const name = 'test';
 
-    return <Child age={21}>이름</Child>;
+//     return <Child age={21}>이름</Child>;
+// }
+
+// --------------------------------------------------------------------------------- //
+
+function App() {
+    // React에서 state를 쓰는 목적 : UI를 바꾸기 위해서!
+    // 변경되어야 하는 값들은 state로 선언!
+
+    // hook
+    // const [state, setState] = useState('initial Value');
+    // const [count, setCount] = useState(0);
+    // const [todoList, setTodoList] = useState([]);
+
+    // 예시 1
+    // const [name, setName] = useState('김할아버지');
+
+    // return (
+    //     <div>
+    //         {name}
+    //         <br />
+    //         <button
+    //             onClick={function () {
+    //                 setName('박할아버지');
+    //             }}
+    //         >
+    //             클릭
+    //         </button>
+    //     </div>
+    // );
+
+    // 예시2
+    const [fruit, setFruit] = useState('');
+
+    return (
+        <div>
+            과일 :
+            <input
+                value={fruit}
+                onChange={function (event) {
+                    // console.log('event', event.target.value);
+                    setFruit(event.target.value);
+                }}
+            />
+            <br></br>
+            {fruit}
+        </div>
+    );
 }
 
 export default App;

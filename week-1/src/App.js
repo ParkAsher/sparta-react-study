@@ -251,32 +251,93 @@ import { useState } from 'react';
 
 // --------------------------------------------------------------------------------- //
 
-/* 불변성 & 순수함수 */
+// /* 불변성 & 순수함수 */
 
-// 불변성 : 메모리에 있는 값을 변경할 수 없는 것.
+// // 불변성 : 메모리에 있는 값을 변경할 수 없는 것.
 
-// 원시데이터 : 숫자, 문자, 불리언...
-// number의 데이터를 2로 바꾼다면, 메모리 주소가 변한다 = 불변성이 있다.
-let number = 1;
-let secondNumber = 1;
+// // 원시데이터 : 숫자, 문자, 불리언...
+// // number의 데이터를 2로 바꾼다면, 메모리 주소가 변한다 = 불변성이 있다.
+// let number = 1;
+// let secondNumber = 1;
 
-number = 2;
+// number = 2;
 
-console.log('number와 secondNumber가 일치? : ', number === secondNumber); // true
+// console.log('number와 secondNumber가 일치? : ', number === secondNumber); // true
 
-// 원시데이터가 아닌 것들 : 배열, 객체, 함수...
-// 다른 공간에 각각 저장하고 주소를 바라본다.
-// 값이 변하였더라도, 주소를 바라보고 있는 것은 바뀌지 않으므로 불변성이 없다.
-let obj1 = {
-    name: 'kim',
-};
+// // 원시데이터가 아닌 것들 : 배열, 객체, 함수...
+// // 다른 공간에 각각 저장하고 주소를 바라본다.
+// // 값이 변하였더라도, 주소를 바라보고 있는 것은 바뀌지 않으므로 불변성이 없다.
+// let obj1 = {
+//     name: 'kim',
+// };
 
-obj1.name = 'park'; // 객체는 불변성이 없다.
+// obj1.name = 'park'; // 객체는 불변성이 없다.
 
-let obj2 = {
-    name: 'kim',
-};
+// let obj2 = {
+//     name: 'kim',
+// };
 
-console.log('obj1과 obj2가 일치? : ', obj1 === obj2); // false
+// console.log('obj1과 obj2가 일치? : ', obj1 === obj2); // false
+
+// --------------------------------------------------------------------------------- //
+
+/* 리액트에서의 불변성 */
+
+// 리액트에서 화면이 리랜더링 될지 말지를 결정하는 것은 state의 변화. 단순 변수는 무시한다!
+// 내부 변수 count는 값이 늘고 있지만, 화면에서는 변하지 않는다.
+// function App() {
+//     let count = 0;
+//     const [input, setInput] = useState('');
+
+//     return (
+//         <div>
+//             <input
+//                 value={input}
+//                 onChange={(e) => {
+//                     setInput(e.target.value);
+//                 }}
+//             />
+//             {input}
+//             <button
+//                 onClick={() => {
+//                     count++;
+//                     console.log(`count는 ${count}입니다.`);
+//                 }}
+//             >
+//                 증가
+//             </button>
+//             {count}
+//         </div>
+//     );
+// }
+
+function App() {
+    // 배열, 객체는 스프레드 문법!
+
+    const [obj, setObj] = useState({
+        name: 'hyunmin',
+        age: 21,
+    });
+
+    return (
+        <div>
+            <div>{obj.name}</div>
+            <button
+                onClick={() => {
+                    // 새로운 객체를 만들어 주어아 한다.
+                    const obj2 = { ...obj };
+                    obj2.name = 'asher';
+                    setObj(obj2);
+
+                    // obj.name = 'asher';
+                    // console.log(obj);
+                    // setObj(obj);
+                }}
+            >
+                변경
+            </button>
+        </div>
+    );
+}
 
 export default App;

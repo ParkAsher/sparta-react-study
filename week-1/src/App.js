@@ -218,35 +218,65 @@ import { useState } from 'react';
 
 // --------------------------------------------------------------------------------- //
 
-/* 예제 1 */
-function App() {
-    const [id, setId] = useState('');
-    const [pw, setPw] = useState('');
+// /* 예제 1 */
+// function App() {
+//     const [id, setId] = useState('');
+//     const [pw, setPw] = useState('');
 
-    const onIdchangeHandler = (e) => {
-        setId(e.target.value);
-    };
-    const ondPwchangeHandler = (e) => {
-        setPw(e.target.value);
-    };
+//     const onIdchangeHandler = (e) => {
+//         setId(e.target.value);
+//     };
+//     const ondPwchangeHandler = (e) => {
+//         setPw(e.target.value);
+//     };
 
-    const onloginClickHandler = () => {
-        alert(`고객님이 입력하신 아이디는 ${id}이며, 비밀번호는 ${pw}입니다.`);
+//     const onloginClickHandler = () => {
+//         alert(`고객님이 입력하신 아이디는 ${id}이며, 비밀번호는 ${pw}입니다.`);
 
-        // 비우기
-        setId('');
-        setPw('');
-    };
+//         // 비우기
+//         setId('');
+//         setPw('');
+//     };
 
-    return (
-        <div>
-            아이디 : <input type='text' value={id} onChange={onIdchangeHandler} />
-            <br />
-            비밀번호 : <input type='password' value={pw} onChange={ondPwchangeHandler} />
-            <br />
-            <button onClick={onloginClickHandler}>로그인</button>
-        </div>
-    );
-}
+//     return (
+//         <div>
+//             아이디 : <input type='text' value={id} onChange={onIdchangeHandler} />
+//             <br />
+//             비밀번호 : <input type='password' value={pw} onChange={ondPwchangeHandler} />
+//             <br />
+//             <button onClick={onloginClickHandler}>로그인</button>
+//         </div>
+//     );
+// }
+
+// --------------------------------------------------------------------------------- //
+
+/* 불변성 & 순수함수 */
+
+// 불변성 : 메모리에 있는 값을 변경할 수 없는 것.
+
+// 원시데이터 : 숫자, 문자, 불리언...
+// number의 데이터를 2로 바꾼다면, 메모리 주소가 변한다 = 불변성이 있다.
+let number = 1;
+let secondNumber = 1;
+
+number = 2;
+
+console.log('number와 secondNumber가 일치? : ', number === secondNumber); // true
+
+// 원시데이터가 아닌 것들 : 배열, 객체, 함수...
+// 다른 공간에 각각 저장하고 주소를 바라본다.
+// 값이 변하였더라도, 주소를 바라보고 있는 것은 바뀌지 않으므로 불변성이 없다.
+let obj1 = {
+    name: 'kim',
+};
+
+obj1.name = 'park'; // 객체는 불변성이 없다.
+
+let obj2 = {
+    name: 'kim',
+};
+
+console.log('obj1과 obj2가 일치? : ', obj1 === obj2); // false
 
 export default App;
